@@ -1,7 +1,7 @@
 Summary:	Gnome calculator
 Summary(pl):	Kalkulator dla Gnome
 Name:		gcalctool
-Version:	4.2.77
+Version:	4.2.83
 Release:	1
 License:	GPL
 Group:		Applications/Math
