@@ -7,11 +7,13 @@ License:	GPL
 Group:		Applications/Math
 Source0:	ftp://ftp.gnome.org/pub/gnome/sources//%{name}/4.2/%{name}-%{version}.tar.bz2
 URL:		http://www.gnome.org/
+BuildRequires:	GConf2-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	GConf2-devel
 BuildRequires:	libgnomeui-devel
 BuildRequires:	scrollkeeper
+Requires(post):	/usr/bin/scrollkeeper-update
+Requires(post):	GConf2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -53,8 +55,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%attr(755,root,root)%{_bindir}/%{name}
 %doc AUTHORS gcalctoolrc NEWS README TODO
+%attr(755,root,root) %{_bindir}/%{name}
 %{_sysconfdir}/gconf/schemas/*
 %{_datadir}/applications/*
 %{_omf_dest_dir}/%{name}
