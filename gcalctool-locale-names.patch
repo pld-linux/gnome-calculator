@@ -1,0 +1,12 @@
+diff -urN aa/gcalctool-4.3.44/configure.in gcalctool-4.3.44/configure.in
+--- aa/gcalctool-4.3.44/configure.in	2004-02-09 16:56:42.000000000 +0100
++++ gcalctool-4.3.44/configure.in	2004-02-13 23:13:17.683183568 +0100
+@@ -74,7 +74,7 @@
+ 
+ dnl Add the languages which your application supports here.
+ AM_PROG_LIBTOOL
+-ALL_LINGUAS="am ar az be ca cs cy da de el es eu fa fi fr he hi hr hu id it ja ko lt mk ml mn ms nl no pl pt pt_BR ro ru sk sl sq sr sr@Latn sv ta uk vi zh_CN zh_TW"
++ALL_LINGUAS="am ar az be ca cs cy da de el es eu fa fi fr he hi hr hu id it ja ko lt mk ml mn ms nb nl pl pt pt_BR ro ru sk sl sq sr sr@Latn sv ta uk vi zh_CN zh_TW"
+ AM_GLIB_GNU_GETTEXT
+ 
+ dnl Use -Wall if we have gcc.
