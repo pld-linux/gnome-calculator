@@ -1,5 +1,5 @@
---- gcalctool-4.4.18/gcalctool.desktop.in.orig	2004-09-16 23:38:43.558160072 +0200
-+++ gcalctool-4.4.18/gcalctool.desktop.in	2004-09-16 23:39:11.340936448 +0200
+--- gcalctool.desktop.in.orig	2004-08-24 21:02:21.383411936 +0200
++++ gcalctool.desktop.in	2004-08-24 21:02:28.693980448 +0200
 @@ -7,7 +7,7 @@
  Terminal=false
  Type=Application

@@ -1,18 +1,23 @@
 Summary:	GNOME calculator
 Summary(pl):	Kalkulator dla GNOME
 Name:		gcalctool
-Version:	4.4.22
+Version:	5.5.41
 Release:	1
-License:	GPL
+License:	GPL v2
 Group:		Applications/Math
-Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/4.4/%{name}-%{version}.tar.bz2
-# Source0-md5:	2136e88e26f9f12a677e6a0dc798b835
+Source0:	http://ftp.gnome.org/pub/gnome/sources/gcalctool/5.5/%{name}-%{version}.tar.bz2
+# Source0-md5:	d4eb2287fa4236fc5a5bf52a930f33f5
 Patch0:		%{name}-desktop.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.4.0
-BuildRequires:	autoconf
+BuildRequires:	GConf2-devel >= 2.10.0
+BuildRequires:	atk-devel >= 1:1.8.0
+BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
-BuildRequires:	libgnomeui-devel >= 2.4.0
+BuildRequires:	bison
+BuildRequires:	flex
+BuildRequires:	intltool
+BuildRequires:	libgnomeui-devel >= 2.10.0
+Buildrequires:	pkgconfig
 BuildRequires:	scrollkeeper
 Requires(post):	/usr/bin/scrollkeeper-update
 Requires(post):	GConf2
@@ -26,7 +31,7 @@ gcalctool jest prostym kalkulatorem spe³niaj±cym wiele funkcji.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch0 -p0
 
 %build
 %{__aclocal}
@@ -34,7 +39,6 @@ gcalctool jest prostym kalkulatorem spe³niaj±cym wiele funkcji.
 %{__automake}
 %configure \
 	--disable-schemas-install
-
 %{__make}
 
 %install
@@ -59,7 +63,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS gcalctoolrc NEWS README TODO
+%doc AUTHORS ChangeLog MAINTAINERS NEWS README TODO gcalctoolrc
 %attr(755,root,root) %{_bindir}/%{name}
 %{_sysconfdir}/gconf/schemas/*
 %{_desktopdir}/*
