@@ -1,0 +1,11 @@
+--- gcalctool-5.5.0/gcalctool.desktop.in.orig	2004-07-27 15:36:36.822393000 +0200
++++ gcalctool-5.5.0/gcalctool.desktop.in	2004-07-27 15:35:53.797933712 +0200
+@@ -7,7 +7,7 @@
+ Terminal=false
+ Type=Application
+ StartupNotify=true
+-Categories=GNOME;Application;Utility;
++Categories=GNOME;Utility;Calculator;
+ X-GNOME-DocPath=gcalctool/gcalctool.xml
+ X-GNOME-Bugzilla-Bugzilla=GNOME
+ X-GNOME-Bugzilla-Product=gcalctool
