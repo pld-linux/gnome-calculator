@@ -1,5 +1,5 @@
-Summary:	Gnome calculator
-Summary(pl):	Kalkulator dla Gnome
+Summary:	GNOME calculator
+Summary(pl):	Kalkulator dla GNOME
 Name:		gcalctool
 Version:	4.3.2
 Release:	1
