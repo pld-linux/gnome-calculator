@@ -1,14 +1,13 @@
 Summary:	GNOME calculator
 Summary(pl):	Kalkulator dla GNOME
 Name:		gcalctool
-Version:	4.4.16
+Version:	4.4.18
 Release:	1
 License:	GPL
 Group:		Applications/Math
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/4.4/%{name}-%{version}.tar.bz2
-# Source0-md5:	4a99b4fc3be0a84d4874f4bef8ca15d8
-Patch0:		%{name}-locale-names.patch
-Patch1:		%{name}-desktop.patch
+# Source0-md5:	b0385549822775571dc550294eb1da58
+Patch0:		%{name}-desktop.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.4.0
 BuildRequires:	autoconf
@@ -28,9 +27,6 @@ gcalctool jest prostym kalkulatorem spe³niaj±cym wiele funkcji.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p0
-
-mv po/{no,nb}.po
 
 %build
 %{__aclocal}
@@ -47,6 +43,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
+
+rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 
 %find_lang %{name} --with-gnome --all-name
 
