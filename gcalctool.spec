@@ -6,6 +6,7 @@ Release:	1
 License:	GPL
 Group:		Applications/Math
 Source0:	ftp://ftp.gnome.org/pub/gnome/sources//%{name}/4.2/%{name}-%{version}.tar.bz2
+# Source0-md5:	cfb03eb5e0fee4813eb72b3b04e1feca
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel
 BuildRequires:	autoconf
