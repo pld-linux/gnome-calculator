@@ -59,7 +59,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS gcalctoolrc NEWS README TODO
 %attr(755,root,root) %{_bindir}/%{name}
 %{_sysconfdir}/gconf/schemas/*
-%{_datadir}/applications/*
+%{_desktopdir}/*
 %{_omf_dest_dir}/%{name}
 %{_pixmapsdir}/*
 %{_mandir}/man1/*
