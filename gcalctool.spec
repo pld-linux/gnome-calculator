@@ -18,7 +18,7 @@ BuildRequires:	flex
 BuildRequires:	intltool
 BuildRequires:	libgnomeui-devel >= 2.10.0-2
 Buildrequires:	pkgconfig
-BuildRequires:	rpmbuild(macros) >= 1.196
+BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper
 Requires(post,preun):	GConf2
 Requires(post,postun):	scrollkeeper
@@ -57,18 +57,14 @@ rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/usr/bin/scrollkeeper-update -q
-%gconf_schema_install /etc/gconf/schemas/gcalctool.schemas
+%gconf_schema_install gcalctool.schemas
+%scrollkeeper_update_post
 
 %preun
-if [ $1 = 0 ]; then
-	%gconf_schema_uninstall /etc/gconf/schemas/gcalctool.schemas
-fi
+%gconf_schema_uninstall gcalctool.schemas
 
 %postun
-if [ $1 = 0 ]; then
-	/usr/bin/scrollkeeper-update -q
-fi
+%scrollkeeper_update_postun
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
