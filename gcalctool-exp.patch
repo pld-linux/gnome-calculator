@@ -1,0 +1,56 @@
+diff -urN gcalctool-5.5.42.orig/ChangeLog gcalctool-5.5.42/ChangeLog
+--- gcalctool-5.5.42.orig/ChangeLog	2005-05-24 10:09:23.000000000 +0200
++++ gcalctool-5.5.42/ChangeLog	2005-05-24 10:10:42.000000000 +0200
+@@ -1,5 +1,5 @@
+ 
+-/*   $Header$
++/*   $Header$
+  *
+  *  Copyright (c) 1987-2005 Sun Microsystems, Inc.
+  *  All Rights Reserved.
+@@ -8,6 +8,12 @@
+ gcalctool change history.
+ =========================
+ 
++2005-04-13 Rich Burridge <rich.burridge@sun.com>
++
++    * Fixed bug 172150 (http://bugzilla.gnome.org/show_bug.cgi?id=172150)
++      The exponential function (e^x) now works in arithmetic operator
++      precedence mode.
++
+ 2005-04-11 Rich Burridge <rich.burridge@sun.com>
+ 
+     * Generated a version for the GNOME 2.10.1 call for tarballs.
+diff -urN gcalctool-5.5.42.orig/gcalctool/ce_tokeniser.l gcalctool-5.5.42/gcalctool/ce_tokeniser.l
+--- gcalctool-5.5.42.orig/gcalctool/ce_tokeniser.l	2005-05-24 10:09:23.000000000 +0200
++++ gcalctool-5.5.42/gcalctool/ce_tokeniser.l	2005-05-24 10:14:12.000000000 +0200
+@@ -2,7 +2,7 @@
+ 
+ %{
+ 
+-/*  $Header$
++/*  $Header$
+  *
+  *  Copyright (C) 2004-2005 Sami Pietila
+  *
+@@ -36,7 +36,7 @@
+ DECIMAL	"."|","
+ SIGN	"+"|"-" 
+ CHARACTER [a-z]|[A-Z]
+-HEX     [0-9]|[A-F]|[a-f]
++HEX     [0-9]|[A-F]
+ BIN     "0"|"1"
+ OCT     [0-7]
+ NUMBER  [DIGIT}*{DECIMAL}{DIGIT}+|{DIGIT}
+diff -urN gcalctool-5.5.42.orig/gcalctool/Makefile.am gcalctool-5.5.42/gcalctool/Makefile.am
+--- gcalctool-5.5.42.orig/gcalctool/Makefile.am	2005-05-24 10:09:23.000000000 +0200
++++ gcalctool-5.5.42/gcalctool/Makefile.am	2005-05-24 10:12:08.000000000 +0200
+@@ -83,7 +83,7 @@
+ 	bison -d -p lr lr_parser.y
+ 
+ lex.ce.c: ce_parser.tab.c ce_tokeniser.l
+-	$(LEX) -i -Pce ce_tokeniser.l
++	$(LEX) -Pce ce_tokeniser.l
+ 
+ lex.lr.c: lr_parser.tab.c lr_tokeniser.l
+ 	$(LEX) -i -Plr lr_tokeniser.l
