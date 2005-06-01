@@ -21,7 +21,6 @@ BuildRequires:	intltool
 BuildRequires:	libgnomeui-devel >= 2.10.0-2
 BuildRequires:	libtool
 Buildrequires:	pkgconfig
-BuildRequires:	popt-devel
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper
 Requires(post,preun):	GConf2
