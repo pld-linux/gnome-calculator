@@ -20,7 +20,7 @@ BuildRequires:	gettext-devel
 BuildRequires:	intltool
 BuildRequires:	libgnomeui-devel >= 2.10.0-2
 BuildRequires:	libtool
-Buildrequires:	pkgconfig
+BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper
 Requires(post,preun):	GConf2
