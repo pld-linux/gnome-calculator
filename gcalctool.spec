@@ -1,26 +1,29 @@
 Summary:	GNOME calculator
 Summary(pl):	Kalkulator dla GNOME
 Name:		gcalctool
-Version:	5.5.41
+Version:	5.7.30
 Release:	1
 License:	GPL v2
 Group:		Applications/Math
-Source0:	http://ftp.gnome.org/pub/gnome/sources/gcalctool/5.5/%{name}-%{version}.tar.bz2
-# Source0-md5:	d4eb2287fa4236fc5a5bf52a930f33f5
+Source0:	http://ftp.gnome.org/pub/gnome/sources/gcalctool/5.7/%{name}-%{version}.tar.bz2
+# Source0-md5:	f761226357bc9e80c970373909522636
 Patch0:		%{name}-desktop.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.10.0
-BuildRequires:	atk-devel >= 1:1.8.0
+BuildRequires:	GConf2-devel >= 2.12.0
+BuildRequires:	atk-devel >= 1:1.10.0
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
 BuildRequires:	bison
 BuildRequires:	flex
+BuildRequires:	gettext-devel
 BuildRequires:	intltool
-BuildRequires:	libgnomeui-devel >= 2.10.0
-Buildrequires:	pkgconfig
+BuildRequires:	libgnomeui-devel >= 2.12.0
+BuildRequires:	libtool
+BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper
-Requires(post):	/usr/bin/scrollkeeper-update
-Requires(post):	GConf2
+Requires(post,preun):	GConf2
+Requires(post,postun):	scrollkeeper
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -56,10 +59,14 @@ rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/usr/bin/scrollkeeper-update
-%gconf_schema_install
+%gconf_schema_install gcalctool.schemas
+%scrollkeeper_update_post
 
-%postun -p /usr/bin/scrollkeeper-update
+%preun
+%gconf_schema_uninstall gcalctool.schemas
+
+%postun
+%scrollkeeper_update_postun
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
