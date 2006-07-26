@@ -1,12 +1,12 @@
 Summary:	GNOME calculator
 Summary(pl):	Kalkulator dla GNOME
 Name:		gcalctool
-Version:	5.8.17
+Version:	5.8.19
 Release:	1
 License:	GPL v2
 Group:		Applications/Math
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gcalctool/5.8/%{name}-%{version}.tar.bz2
-# Source0-md5:	2cf984fcec7db4796edf242405b297f9
+# Source0-md5:	9fbf0f2552f6fd1a0fadf54a2125fef2
 Patch0:		%{name}-desktop.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.14.0
@@ -17,14 +17,14 @@ BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	gettext-devel
 BuildRequires:	intltool >= 0.35
-BuildRequires:	libgnomeui-devel >= 2.15.2
+BuildRequires:	libgnomeui-devel >= 2.15.90
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper
 Requires(post,preun):	GConf2 >= 2.14.0
 Requires(post,postun):	scrollkeeper
-Requires:	libgnomeui >= 2.15.2
+Requires:	libgnomeui >= 2.15.90
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -42,7 +42,6 @@ gcalctool jest prostym kalkulatorem spe³niaj±cym wiele funkcji.
 %{__aclocal}
 %{__autoconf}
 %{__automake}
-LDFLAGS="%{rpmldflags} -Wl,--as-needed"
 %configure \
 	--disable-schemas-install \
 	--disable-scrollkeeper
