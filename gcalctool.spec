@@ -73,6 +73,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog MAINTAINERS NEWS README TODO gcalctoolrc
 %attr(755,root,root) %{_bindir}/%{name}
 %{_sysconfdir}/gconf/schemas/gcalctool.schemas
-%{_desktopdir}/*
+%{_desktopdir}/*.desktop
 %{_omf_dest_dir}/%{name}
 %{_mandir}/man1/*
