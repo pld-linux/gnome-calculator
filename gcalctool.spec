@@ -1,5 +1,5 @@
 Summary:	GNOME calculator
-Summary(pl):	Kalkulator dla GNOME
+Summary(pl.UTF-8):   Kalkulator dla GNOME
 Name:		gcalctool
 Version:	5.8.25
 Release:	1
@@ -30,8 +30,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 gcalctool is a simple calculator that performs a variety of functions.
 
-%description -l pl
-gcalctool jest prostym kalkulatorem spe³niaj±cym wiele funkcji.
+%description -l pl.UTF-8
+gcalctool jest prostym kalkulatorem speÅ‚niajÄ…cym wiele funkcji.
 
 %prep
 %setup -q
