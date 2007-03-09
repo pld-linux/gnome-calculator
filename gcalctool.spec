@@ -1,30 +1,32 @@
 Summary:	GNOME calculator
 Summary(pl.UTF-8):	Kalkulator dla GNOME
 Name:		gcalctool
-Version:	5.8.25
+Version:	5.9.13
 Release:	1
 License:	GPL v2
 Group:		Applications/Math
-Source0:	http://ftp.gnome.org/pub/gnome/sources/gcalctool/5.8/%{name}-%{version}.tar.bz2
-# Source0-md5:	28074081a9625b8b3d1f7499bc27bbfb
+Source0:	http://ftp.gnome.org/pub/gnome/sources/gcalctool/5.9/%{name}-%{version}.tar.bz2
+# Source0-md5:	744579f3d3dce65959f12215c01e3716
 Patch0:		%{name}-desktop.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.16.0
-BuildRequires:	atk-devel >= 1:1.12.3
+BuildRequires:	GConf2-devel >= 2.18.0.1
+BuildRequires:	atk-devel >= 1:1.17.0
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
 BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	gettext-devel
-BuildRequires:	intltool >= 0.35.0
-BuildRequires:	libgnomeui-devel >= 2.16.1
+BuildRequires:	gnome-doc-utils >= 0.9.2
+BuildRequires:	gtk+2-devel >= 2:2.10.9
+BuildRequires:	intltool >= 0.35.5
+BuildRequires:	libgnomeui-devel >= 2.17.92
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper
-Requires(post,preun):	GConf2 >= 2.16.0
 Requires(post,postun):	scrollkeeper
-Requires:	libgnomeui >= 2.16.1
+Requires(post,preun):	GConf2
+Requires:	libgnomeui >= 2.17.92
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -39,6 +41,9 @@ gcalctool jest prostym kalkulatorem spełniającym wiele funkcji.
 
 %build
 %{__gnome_doc_common}
+%{__glib_gettextize}
+%{__intltoolize}
+%{__libtoolize}
 %{__aclocal}
 %{__autoconf}
 %{__automake}
