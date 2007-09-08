@@ -1,32 +1,29 @@
 Summary:	GNOME calculator
 Summary(pl.UTF-8):	Kalkulator dla GNOME
 Name:		gcalctool
-Version:	5.19.91
+Version:	5.19.92
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Math
-Source0:	http://ftp.gnome.org/pub/gnome/sources/gcalctool/5.19/%{name}-%{version}.tar.bz2
-# Source0-md5:	dd7e6f92ddb1fbc4330d4930e266cc1b
-#Patch0:		%{name}-desktop.patch
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gcalctool/5.19/%{name}-%{version}.tar.bz2
+# Source0-md5:	1b2a327311134d830a4b3628b51468f0
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.18.0.1
-BuildRequires:	atk-devel >= 1:1.18.0
+BuildRequires:	GConf2-devel >= 2.19.1
+BuildRequires:	atk-devel >= 1:1.19.6
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
 BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	gettext-devel
-BuildRequires:	gnome-doc-utils >= 0.9.2
-BuildRequires:	gtk+2-devel >= 2:2.10.9
-BuildRequires:	intltool >= 0.35.5
-BuildRequires:	libgnomeui-devel >= 2.18.0
+BuildRequires:	gnome-doc-utils >= 0.11.2
+BuildRequires:	gtk+2-devel >= 2:2.11.6
+BuildRequires:	intltool >= 0.36.1
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper
 Requires(post,postun):	scrollkeeper
 Requires(post,preun):	GConf2
-Requires:	libgnomeui >= 2.18.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -37,7 +34,6 @@ gcalctool jest prostym kalkulatorem spełniającym wiele funkcji.
 
 %prep
 %setup -q
-#%patch0 -p0
 
 %build
 %{__gnome_doc_common}
@@ -79,5 +75,19 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/%{name}
 %{_sysconfdir}/gconf/schemas/gcalctool.schemas
 %{_desktopdir}/*.desktop
-%{_omf_dest_dir}/%{name}
+%dir %{_omf_dest_dir}/%{name}
+%{_omf_dest_dir}/gcalctool/gcalctool-C.omf
+%lang(bg) %{_omf_dest_dir}/gcalctool/gcalctool-bg.omf
+%lang(de) %{_omf_dest_dir}/gcalctool/gcalctool-de.omf
+%lang(es) %{_omf_dest_dir}/gcalctool/gcalctool-es.omf
+%lang(fr) %{_omf_dest_dir}/gcalctool/gcalctool-fr.omf
+%lang(it) %{_omf_dest_dir}/gcalctool/gcalctool-it.omf
+%lang(ja) %{_omf_dest_dir}/gcalctool/gcalctool-ja.omf
+%lang(ko) %{_omf_dest_dir}/gcalctool/gcalctool-ko.omf
+%lang(oc) %{_omf_dest_dir}/gcalctool/gcalctool-oc.omf
+%lang(pt_BR) %{_omf_dest_dir}/gcalctool/gcalctool-pt_BR.omf
+%lang(sv) %{_omf_dest_dir}/gcalctool/gcalctool-sv.omf
+%lang(zh_CN) %{_omf_dest_dir}/gcalctool/gcalctool-zh_CN.omf
+%lang(zh_HK) %{_omf_dest_dir}/gcalctool/gcalctool-zh_HK.omf
+%lang(zh_TW) %{_omf_dest_dir}/gcalctool/gcalctool-zh_TW.omf
 %{_mandir}/man1/*
