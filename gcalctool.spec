@@ -1,21 +1,21 @@
 Summary:	GNOME calculator
 Summary(pl.UTF-8):	Kalkulator dla GNOME
 Name:		gcalctool
-Version:	5.20.0
+Version:	5.20.1
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Math
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gcalctool/5.20/%{name}-%{version}.tar.bz2
-# Source0-md5:	fefe44a52465eae39c5bf9a9669a0aa6
+# Source0-md5:	3dba1bd6ade2603fbeeca51c20a01a34
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.19.1
+BuildRequires:	GConf2-devel >= 2.20.0
 BuildRequires:	atk-devel >= 1:1.20.0
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
 BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	gettext-devel
-BuildRequires:	gnome-doc-utils >= 0.11.2
+BuildRequires:	gnome-doc-utils >= 0.12.0
 BuildRequires:	gtk+2-devel >= 2:2.12.0
 BuildRequires:	intltool >= 0.36.1
 BuildRequires:	libtool
@@ -90,4 +90,4 @@ rm -rf $RPM_BUILD_ROOT
 %lang(zh_CN) %{_omf_dest_dir}/gcalctool/gcalctool-zh_CN.omf
 %lang(zh_HK) %{_omf_dest_dir}/gcalctool/gcalctool-zh_HK.omf
 %lang(zh_TW) %{_omf_dest_dir}/gcalctool/gcalctool-zh_TW.omf
-%{_mandir}/man1/*
+%{_mandir}/man1/*.1*
