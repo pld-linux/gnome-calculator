@@ -20,6 +20,8 @@ BuildRequires:	gtk+2-devel >= 2:2.12.0
 BuildRequires:	intltool >= 0.36.1
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
+# support for --with-omf in find-lang.sh
+BuildRequires:	rpm-build >= 4.4.9-10
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper
 Requires(post,postun):	scrollkeeper
@@ -36,6 +38,9 @@ gcalctool jest prostym kalkulatorem spełniającym wiele funkcji.
 
 %prep
 %setup -q
+
+sed -i -e s#sr\@Latn#sr\@latin# po/LINGUAS
+mv -f po/sr\@{Latn,latin}.po
 
 %build
 %{__gnome_doc_common}
@@ -56,9 +61,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-[ -d $RPM_BUILD_ROOT%{_datadir}/locale/sr@latin ] || \
-	mv -f $RPM_BUILD_ROOT%{_datadir}/locale/sr@{Latn,latin}
-%find_lang %{name} --with-gnome --all-name
+%find_lang %{name} --with-gnome --with-omf --all-name
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -77,21 +80,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog MAINTAINERS NEWS README TODO gcalctoolrc
 %attr(755,root,root) %{_bindir}/%{name}
+%attr(755,root,root) %{_bindir}/gnome-calculator
 %{_sysconfdir}/gconf/schemas/gcalctool.schemas
 %{_desktopdir}/*.desktop
-%dir %{_omf_dest_dir}/%{name}
-%{_omf_dest_dir}/gcalctool/gcalctool-C.omf
-%lang(bg) %{_omf_dest_dir}/gcalctool/gcalctool-bg.omf
-%lang(de) %{_omf_dest_dir}/gcalctool/gcalctool-de.omf
-%lang(es) %{_omf_dest_dir}/gcalctool/gcalctool-es.omf
-%lang(fr) %{_omf_dest_dir}/gcalctool/gcalctool-fr.omf
-%lang(it) %{_omf_dest_dir}/gcalctool/gcalctool-it.omf
-%lang(ja) %{_omf_dest_dir}/gcalctool/gcalctool-ja.omf
-%lang(ko) %{_omf_dest_dir}/gcalctool/gcalctool-ko.omf
-%lang(oc) %{_omf_dest_dir}/gcalctool/gcalctool-oc.omf
-%lang(pt_BR) %{_omf_dest_dir}/gcalctool/gcalctool-pt_BR.omf
-%lang(sv) %{_omf_dest_dir}/gcalctool/gcalctool-sv.omf
-%lang(zh_CN) %{_omf_dest_dir}/gcalctool/gcalctool-zh_CN.omf
-%lang(zh_HK) %{_omf_dest_dir}/gcalctool/gcalctool-zh_HK.omf
-%lang(zh_TW) %{_omf_dest_dir}/gcalctool/gcalctool-zh_TW.omf
 %{_mandir}/man1/*.1*
