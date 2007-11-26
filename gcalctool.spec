@@ -15,6 +15,7 @@ BuildRequires:	automake
 BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	gettext-devel
+BuildRequires:	gnome-common
 BuildRequires:	gnome-doc-utils >= 0.12.0
 BuildRequires:	gtk+2-devel >= 2:2.12.0
 BuildRequires:	intltool >= 0.36.1
