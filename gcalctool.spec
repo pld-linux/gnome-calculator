@@ -21,10 +21,10 @@ BuildRequires:	gtk+2-devel >= 2:2.12.0
 BuildRequires:	intltool >= 0.36.1
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
-# support for --with-omf in find-lang.sh
-BuildRequires:	rpm-build >= 4.4.9-10
+BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper
+BuildRequires:	sed >= 4.0
 Requires(post,postun):	scrollkeeper
 Requires(post,preun):	GConf2
 # sr@Latn vs. sr@latin
@@ -40,7 +40,7 @@ gcalctool jest prostym kalkulatorem spełniającym wiele funkcji.
 %prep
 %setup -q
 
-sed -i -e s#sr\@Latn#sr\@latin# po/LINGUAS
+sed -i -e 's#sr\@Latn#sr\@latin#' po/LINGUAS
 mv -f po/sr\@{Latn,latin}.po
 
 %build
