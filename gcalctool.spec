@@ -5,7 +5,7 @@ Version:	5.21.91
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Math
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gcalctool/5.20/%{name}-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gcalctool/5.21/%{name}-%{version}.tar.bz2
 # Source0-md5:	05941fc74cc770a4ee95807bf87545ca
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.21.90
