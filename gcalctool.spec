@@ -1,25 +1,26 @@
 Summary:	GNOME calculator
 Summary(pl.UTF-8):	Kalkulator dla GNOME
 Name:		gcalctool
-Version:	5.20.2
-Release:	2
+Version:	5.22.0
+Release:	1
 License:	GPL v2
 Group:		X11/Applications/Math
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gcalctool/5.20/%{name}-%{version}.tar.bz2
-# Source0-md5:	bcde10b8029d3a513183e8aac9506c1f
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gcalctool/5.22/%{name}-%{version}.tar.bz2
+# Source0-md5:	037ef812fe5562b4dda55b9eea82b77b
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.20.0
-BuildRequires:	atk-devel >= 1:1.20.0
+BuildRequires:	GConf2-devel >= 2.22.0
+BuildRequires:	atk-devel >= 1:1.22.0
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
 BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	gettext-devel
-BuildRequires:	gnome-common
+BuildRequires:	gnome-common >= 2.20.0
 BuildRequires:	gnome-doc-utils >= 0.12.0
-BuildRequires:	gtk+2-devel >= 2:2.12.0
-BuildRequires:	intltool >= 0.36.1
+BuildRequires:	gtk+2-devel >= 2:2.12.8
+BuildRequires:	intltool >= 0.37.0
 BuildRequires:	libtool
+BuildRequires:	libglade2-devel >= 1:2.6.2
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.197
@@ -40,8 +41,8 @@ gcalctool jest prostym kalkulatorem spełniającym wiele funkcji.
 %prep
 %setup -q
 
-sed -i -e 's#sr\@Latn#sr\@latin#' po/LINGUAS
-mv -f po/sr\@{Latn,latin}.po
+sed -i -e 's#sr@Latn#sr@latin#' po/LINGUAS
+mv -f po/sr@{Latn,latin}.po
 
 %build
 %{__gnome_doc_common}
@@ -50,6 +51,7 @@ mv -f po/sr\@{Latn,latin}.po
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure \
 	--disable-schemas-install \
@@ -80,8 +82,9 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog MAINTAINERS NEWS README TODO gcalctoolrc
-%attr(755,root,root) %{_bindir}/%{name}
+%attr(755,root,root) %{_bindir}/gcalctool
 %attr(755,root,root) %{_bindir}/gnome-calculator
 %{_sysconfdir}/gconf/schemas/gcalctool.schemas
-%{_desktopdir}/*.desktop
-%{_mandir}/man1/*.1*
+%{_desktopdir}/gcalctool.desktop
+%{_datadir}/gcalctool
+%{_mandir}/man1/gcalctool.1*
