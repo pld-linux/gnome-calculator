@@ -1,12 +1,12 @@
 Summary:	GNOME calculator
 Summary(pl.UTF-8):	Kalkulator dla GNOME
 Name:		gcalctool
-Version:	5.24.1
+Version:	5.24.2
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Math
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gcalctool/5.24/%{name}-%{version}.tar.bz2
-# Source0-md5:	39c4ecdf60d250dbaac1c2c253aab653
+# Source0-md5:	a784f13120115cf94cf88f87d32baf9c
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.22.0
 BuildRequires:	autoconf >= 2.53
