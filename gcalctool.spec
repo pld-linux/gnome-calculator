@@ -12,6 +12,7 @@ BuildRequires:	GConf2-devel >= 2.26.0
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
 BuildRequires:	bison
+BuildRequires:	docbook-dtd412-xml
 BuildRequires:	flex
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.24.0
@@ -20,6 +21,7 @@ BuildRequires:	gtk+2-devel >= 2:2.16.0
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool
 BuildRequires:	libglade2-devel >= 1:2.6.2
+BuildRequires:	libxml2-progs
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.197
