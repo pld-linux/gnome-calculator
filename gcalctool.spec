@@ -1,12 +1,12 @@
 Summary:	GNOME calculator
 Summary(pl.UTF-8):	Kalkulator dla GNOME
 Name:		gcalctool
-Version:	5.26.3
-Release:	2
+Version:	5.28.2
+Release:	1
 License:	GPL v2
 Group:		X11/Applications/Math
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gcalctool/5.26/%{name}-%{version}.tar.bz2
-# Source0-md5:	4208595c1992c50a7f71882a23e76190
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gcalctool/5.28/%{name}-%{version}.tar.bz2
+# Source0-md5:	5c7ad2f95f2f0756f8261073dde342da
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.26.0
 BuildRequires:	autoconf >= 2.53
@@ -20,13 +20,11 @@ BuildRequires:	gnome-doc-utils >= 0.14.0
 BuildRequires:	gtk+2-devel >= 2:2.16.0
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool
-BuildRequires:	libglade2-devel >= 1:2.6.2
 BuildRequires:	libxml2-progs
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.197
 BuildRequires:	scrollkeeper
-BuildRequires:	sed >= 4.0
 Requires(post,postun):	scrollkeeper
 Requires(post,preun):	GConf2
 # sr@Latn vs. sr@latin
@@ -41,9 +39,6 @@ gcalctool jest prostym kalkulatorem spełniającym wiele funkcji.
 
 %prep
 %setup -q
-
-rm -f po/ca@valencia.po
-sed -i -e 's/ca@valencia//' po/LINGUAS
 
 %build
 %{__gnome_doc_common}
@@ -82,7 +77,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog MAINTAINERS NEWS README TODO gcalctoolrc
+%doc AUTHORS ChangeLog MAINTAINERS NEWS README data/gcalctoolrc
 %attr(755,root,root) %{_bindir}/gcalctool
 %attr(755,root,root) %{_bindir}/gnome-calculator
 %{_sysconfdir}/gconf/schemas/gcalctool.schemas
