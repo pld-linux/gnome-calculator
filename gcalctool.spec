@@ -1,12 +1,12 @@
 Summary:	GNOME calculator
 Summary(pl.UTF-8):	Kalkulator dla GNOME
 Name:		gcalctool
-Version:	5.28.2
+Version:	5.30.0
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Math
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gcalctool/5.28/%{name}-%{version}.tar.bz2
-# Source0-md5:	5c7ad2f95f2f0756f8261073dde342da
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gcalctool/5.30/%{name}-%{version}.tar.bz2
+# Source0-md5:	edfc788c8d107d57e84d2c3415c6442b
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.26.0
 BuildRequires:	autoconf >= 2.53
@@ -17,7 +17,7 @@ BuildRequires:	flex
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gnome-doc-utils >= 0.14.0
-BuildRequires:	gtk+2-devel >= 2:2.16.0
+BuildRequires:	gtk+2-devel >= 2:2.18.0
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool
 BuildRequires:	libxml2-progs
@@ -40,6 +40,9 @@ gcalctool jest prostym kalkulatorem spełniającym wiele funkcji.
 %prep
 %setup -q
 
+sed -i -e 's/^en@shaw//' po/LINGUAS
+rm -f po/en@shaw.po
+
 %build
 %{__gnome_doc_common}
 %{__glib_gettextize}
@@ -51,7 +54,8 @@ gcalctool jest prostym kalkulatorem spełniającym wiele funkcji.
 %{__automake}
 %configure \
 	--disable-schemas-install \
-	--disable-scrollkeeper
+	--disable-scrollkeeper \
+	--disable-silent-rules
 %{__make}
 
 %install
@@ -77,7 +81,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog MAINTAINERS NEWS README data/gcalctoolrc
+%doc AUTHORS ChangeLog NEWS README data/gcalctoolrc
+%attr(755,root,root) %{_bindir}/gcalccmd
 %attr(755,root,root) %{_bindir}/gcalctool
 %attr(755,root,root) %{_bindir}/gnome-calculator
 %{_sysconfdir}/gconf/schemas/gcalctool.schemas
