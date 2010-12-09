@@ -23,7 +23,7 @@ BuildRequires:	libtool
 BuildRequires:	libxml2-progs
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
-BuildRequires:	rpmbuild(macros) >= 1.197
+BuildRequires:	rpmbuild(macros) >= 1.592
 BuildRequires:	scrollkeeper
 Requires(post,postun):	glib2 >= 1:2.26.0
 Requires(post,postun):	scrollkeeper
@@ -71,11 +71,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 %scrollkeeper_update_post
-glib-compile-schemas %{_datadir}/glib-2.0/schemas
+%glib_compile_schemas
 
 %postun
 %scrollkeeper_update_postun
-glib-compile-schemas %{_datadir}/glib-2.0/schemas
+%glib_compile_schemas
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
