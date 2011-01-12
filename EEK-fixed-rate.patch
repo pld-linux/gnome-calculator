@@ -1,0 +1,24 @@
+--- gcalctool-5.32.2/src/currency.c~	2010-10-13 03:25:41.000000000 +0300
++++ gcalctool-5.32.2/src/currency.c	2011-01-12 18:38:53.916009388 +0200
+@@ -167,7 +167,7 @@
+     }
+ 
+     len = (xpath_obj->nodesetval) ? xpath_obj->nodesetval->nodeNr : 0;
+-    currency_count = len + 1;
++    currency_count = len + 2;
+     currencies = g_slice_alloc0(sizeof(currency) * currency_count);
+     for (i = 0; i < len; i++) {
+         if (xpath_obj->nodesetval->nodeTab[i]->type == XML_ELEMENT_NODE) {
+@@ -184,6 +184,12 @@
+     mp_set_from_integer(1, &foo);
+     currencies[len].value = foo;
+ 
++    // EEK has fixed rate 1 EUR = 15.6466 EEK
++    currencies[len + 1].short_name = g_strdup("EEK");
++    MPNumber eek;
++    mp_set_from_double(15.6466, &eek);
++    currencies[len + 1].value = eek;
++
+     xmlXPathFreeObject(xpath_obj);
+     xmlXPathFreeContext(xpath_ctx);
+     xmlFreeDoc(document);
