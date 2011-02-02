@@ -4,7 +4,7 @@ Name:		gcalctool
 Version:	5.32.2
 Release:	2
 License:	GPL v2
-Group:		X11/Applications/Math
+Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gcalctool/5.32/%{name}-%{version}.tar.bz2
 # Source0-md5:	3f56976752dc990b4fb9e5d60e9a04eb
 Patch0:		EEK-fixed-rate.patch
@@ -21,6 +21,7 @@ BuildRequires:	gnome-doc-utils >= 0.14.0
 BuildRequires:	gtk+2-devel >= 2:2.18.0
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool
+BuildRequires:	libxml2-devel
 BuildRequires:	libxml2-progs
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
