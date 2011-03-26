@@ -44,9 +44,6 @@ gcalctool jest prostym kalkulatorem spełniającym wiele funkcji.
 %setup -q
 %patch0 -p1
 
-sed -i -e 's/^en@shaw//' po/LINGUAS
-rm -f po/en@shaw.po
-
 %build
 %{__gnome_doc_common}
 %{__glib_gettextize}
