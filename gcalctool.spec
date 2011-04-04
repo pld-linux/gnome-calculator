@@ -1,14 +1,13 @@
 Summary:	GNOME calculator
 Summary(pl.UTF-8):	Kalkulator dla GNOME
 Name:		gcalctool
-Version:	5.32.2
-Release:	2
+Version:	6.0.0
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gcalctool/5.32/%{name}-%{version}.tar.bz2
-# Source0-md5:	3f56976752dc990b4fb9e5d60e9a04eb
-Patch0:		EEK-fixed-rate.patch
-URL:		http://www.gnome.org/
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gcalctool/6.0/%{name}-%{version}.tar.bz2
+# Source0-md5:	286fee052bf6355ea9af658db74b0164
+URL:		http://live.gnome.org/Gcalctool
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
 BuildRequires:	bison
@@ -18,7 +17,7 @@ BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.26.0
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gnome-doc-utils >= 0.14.0
-BuildRequires:	gtk+2-devel >= 2:2.18.0
+BuildRequires:	gtk+3-devel >= 3.0.0
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel
@@ -42,7 +41,6 @@ gcalctool jest prostym kalkulatorem spełniającym wiele funkcji.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__gnome_doc_common}
@@ -86,4 +84,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/gcalctool.desktop
 %{_datadir}/gcalctool
 %{_datadir}/glib-2.0/schemas/org.gnome.gcalctool.gschema.xml
+%{_mandir}/man1/gcalccmd.1*
 %{_mandir}/man1/gcalctool.1*
