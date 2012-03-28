@@ -1,12 +1,12 @@
 Summary:	GNOME calculator
 Summary(pl.UTF-8):	Kalkulator dla GNOME
 Name:		gcalctool
-Version:	6.2.0
+Version:	6.4.0
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gcalctool/6.2/%{name}-%{version}.tar.xz
-# Source0-md5:	2ec304f118735f6268d38741394a3b9e
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gcalctool/6.4/%{name}-%{version}.tar.xz
+# Source0-md5:	4e2e6bf529aeffab92ce26edae47b396
 URL:		http://live.gnome.org/Gcalctool
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
@@ -14,9 +14,8 @@ BuildRequires:	bison
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	flex
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.26.0
+BuildRequires:	glib2-devel >= 1:2.31.0
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gnome-doc-utils >= 0.14.0
 BuildRequires:	gtk+3-devel >= 3.0.0
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libtool
@@ -25,11 +24,10 @@ BuildRequires:	libxml2-progs
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.592
-BuildRequires:	scrollkeeper
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
+BuildRequires:	yelp-tools
 Requires(post,postun):	glib2 >= 1:2.26.0
-Requires(post,postun):	scrollkeeper
 Requires:	dconf
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
@@ -54,7 +52,6 @@ gcalctool jest prostym kalkulatorem spełniającym wiele funkcji.
 %{__autoheader}
 %{__automake}
 %configure \
-	--disable-scrollkeeper \
 	--disable-silent-rules
 %{__make}
 
@@ -64,17 +61,15 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%find_lang %{name} --with-gnome --with-omf --all-name
+%find_lang %{name} --with-gnome --all-name
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%scrollkeeper_update_post
 %glib_compile_schemas
 
 %postun
-%scrollkeeper_update_postun
 %glib_compile_schemas
 
 %files -f %{name}.lang
