@@ -1,12 +1,12 @@
 Summary:	GNOME calculator
 Summary(pl.UTF-8):	Kalkulator dla GNOME
 Name:		gcalctool
-Version:	6.4.0
+Version:	6.4.1.1
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gcalctool/6.4/%{name}-%{version}.tar.xz
-# Source0-md5:	4e2e6bf529aeffab92ce26edae47b396
+# Source0-md5:	ea604540f86e2c6a52579b68e7d047e9
 URL:		http://live.gnome.org/Gcalctool
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
@@ -14,7 +14,7 @@ BuildRequires:	bison
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	flex
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.31.0
+BuildRequires:	glib2-devel >= 1:2.32.0
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gtk+3-devel >= 3.0.0
 BuildRequires:	intltool >= 0.40.0
