@@ -1,13 +1,13 @@
 Summary:	GNOME calculator
 Summary(pl.UTF-8):	Kalkulator dla GNOME
 Name:		gnome-calculator
-Version:	6.6.2
+Version:	3.8.0
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gcalctool/6.6/%{name}-%{version}.tar.xz
-# Source0-md5:	94b40737ab5d37983826ee558711199f
-URL:		http://live.gnome.org/Gcalctool
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-calculator/3.8/%{name}-%{version}.tar.xz
+# Source0-md5:	69947f4c6703c373513e339078d9c0ef
+URL:		https://live.gnome.org/Calculator
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
 BuildRequires:	docbook-dtd412-xml
@@ -23,10 +23,13 @@ BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.592
 BuildRequires:	tar >= 1:1.22
+BuildRequires:	vala >= 2:0.18.0
 BuildRequires:	xz
 BuildRequires:	yelp-tools
 Requires(post,postun):	glib2 >= 1:2.26.0
 Requires:	dconf
+Provides:	gcalctool = 6.6.3-1
+Obsoletes:	gcalctool < 6.6.3-1
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -47,7 +50,6 @@ gcalctool jest prostym kalkulatorem spełniającym wiele funkcji.
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
-%{__autoheader}
 %{__automake}
 %configure \
 	--disable-silent-rules
@@ -72,12 +74,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README
+%doc NEWS
 %attr(755,root,root) %{_bindir}/gcalccmd
-%attr(755,root,root) %{_bindir}/gcalctool
 %attr(755,root,root) %{_bindir}/gnome-calculator
 %{_desktopdir}/gcalctool.desktop
-%{_datadir}/gcalctool
-%{_datadir}/glib-2.0/schemas/org.gnome.gcalctool.gschema.xml
+%{_datadir}/gnome-calculator
+%{_datadir}/glib-2.0/schemas/org.gnome.calculator.gschema.xml
 %{_mandir}/man1/gcalccmd.1*
-%{_mandir}/man1/gcalctool.1*
+%{_mandir}/man1/gnome-calculator.1*
