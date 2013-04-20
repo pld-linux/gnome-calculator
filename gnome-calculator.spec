@@ -1,12 +1,12 @@
 Summary:	GNOME calculator
 Summary(pl.UTF-8):	Kalkulator dla GNOME
 Name:		gnome-calculator
-Version:	3.8.0
+Version:	3.8.1
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-calculator/3.8/%{name}-%{version}.tar.xz
-# Source0-md5:	69947f4c6703c373513e339078d9c0ef
+# Source0-md5:	7cdabe9ca0be36a57e86e62c2daabdca
 URL:		https://live.gnome.org/Calculator
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
