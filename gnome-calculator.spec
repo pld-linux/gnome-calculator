@@ -1,20 +1,20 @@
 Summary:	GNOME calculator
 Summary(pl.UTF-8):	Kalkulator dla GNOME
 Name:		gnome-calculator
-Version:	3.12.4
+Version:	3.14.0
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-calculator/3.12/%{name}-%{version}.tar.xz
-# Source0-md5:	d6896ed3a4d86ec18f8056c3c4e33f7a
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-calculator/3.14/%{name}-%{version}.tar.xz
+# Source0-md5:	2b3cf2462385851182d6119006546483
 URL:		https://live.gnome.org/Calculator
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.32.0
+BuildRequires:	glib2-devel >= 1:2.40.0
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gtk+3-devel >= 3.10.0
+BuildRequires:	gtk+3-devel >= 3.11.6
 BuildRequires:	gtksourceview3-devel >= 3.0.0
 BuildRequires:	intltool >= 0.50.0
 BuildRequires:	libtool
@@ -24,10 +24,10 @@ BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.592
 BuildRequires:	tar >= 1:1.22
-BuildRequires:	vala >= 2:0.22.0
+BuildRequires:	vala >= 2:0.24.0
 BuildRequires:	xz
 BuildRequires:	yelp-tools
-Requires(post,postun):	glib2 >= 1:2.32.0
+Requires(post,postun):	glib2 >= 1:2.40.0
 Requires:	dconf
 Provides:	gcalctool = 6.6.3-1
 Obsoletes:	gcalctool < 6.6.3-1
@@ -79,8 +79,11 @@ rm -rf $RPM_BUILD_ROOT
 %doc NEWS
 %attr(755,root,root) %{_bindir}/gcalccmd
 %attr(755,root,root) %{_bindir}/gnome-calculator
+%attr(755,root,root) %{_libdir}/gnome-calculator-search-provider
 %{_desktopdir}/gnome-calculator.desktop
-%{_datadir}/glib-2.0/schemas/org.gnome.calculator.gschema.xml
 %{_datadir}/appdata/gnome-calculator.appdata.xml
+%{_datadir}/dbus-1/services/org.gnome.Calculator.SearchProvider.service
+%{_datadir}/glib-2.0/schemas/org.gnome.calculator.gschema.xml
+%{_datadir}/gnome-shell/search-providers/gnome-calculator-search-provider.ini
 %{_mandir}/man1/gcalccmd.1*
 %{_mandir}/man1/gnome-calculator.1*
