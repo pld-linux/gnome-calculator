@@ -11,7 +11,7 @@ URL:		https://live.gnome.org/Calculator
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.40.0
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gtk+3-devel >= 3.11.6
