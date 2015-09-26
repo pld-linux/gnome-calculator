@@ -1,12 +1,12 @@
 Summary:	GNOME calculator
 Summary(pl.UTF-8):	Kalkulator dla GNOME
 Name:		gnome-calculator
-Version:	3.16.2
+Version:	3.18.0
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-calculator/3.16/%{name}-%{version}.tar.xz
-# Source0-md5:	3756f5f782c008b9b4e612a0d517f834
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-calculator/3.18/%{name}-%{version}.tar.xz
+# Source0-md5:	b7e47bea8409eda39bb68b20da1bca9e
 URL:		https://live.gnome.org/Calculator
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
@@ -17,7 +17,7 @@ BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gtk+3-devel >= 3.11.6
 BuildRequires:	gtksourceview3-devel >= 3.15.1
 BuildRequires:	intltool >= 0.50.0
-BuildRequires:	libtool
+BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxml2-devel
 BuildRequires:	libxml2-progs
 BuildRequires:	mpfr-devel
@@ -64,6 +64,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/gnome-calculator/libcalculator.{a,la}
+
 %find_lang %{name} --with-gnome --all-name
 
 %clean
@@ -71,9 +73,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 %glib_compile_schemas
+/sbin/ldconfig
 
 %postun
 %glib_compile_schemas
+/sbin/ldconfig
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
@@ -81,6 +85,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/gcalccmd
 %attr(755,root,root) %{_bindir}/gnome-calculator
 %attr(755,root,root) %{_libdir}/gnome-calculator-search-provider
+%dir %{_libdir}/gnome-calculator
+%attr(755,root,root) %{_libdir}/gnome-calculator/libcalculator.so
 %{_desktopdir}/gnome-calculator.desktop
 %{_datadir}/appdata/gnome-calculator.appdata.xml
 %{_datadir}/dbus-1/services/org.gnome.Calculator.SearchProvider.service
