@@ -1,25 +1,24 @@
 Summary:	GNOME calculator
 Summary(pl.UTF-8):	Kalkulator dla GNOME
 Name:		gnome-calculator
-Version:	3.20.0
+Version:	3.20.1
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-calculator/3.20/%{name}-%{version}.tar.xz
-# Source0-md5:	4a8632e1eec4024f8048f17105fbb802
+# Source0-md5:	f4288c2d33060e567e964413b55f7993
 URL:		https://live.gnome.org/Calculator
 BuildRequires:	autoconf >= 2.53
-BuildRequires:	automake
+BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.40.0
-BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gtk+3-devel >= 3.11.6
 BuildRequires:	gtksourceview3-devel >= 3.15.1
 BuildRequires:	intltool >= 0.50.0
 BuildRequires:	libsoup-devel >= 2.42.0
 BuildRequires:	libtool >= 2:2.2
-BuildRequires:	libxml2-devel
+BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	libxml2-progs
 BuildRequires:	mpfr-devel
 BuildRequires:	pkgconfig
@@ -31,6 +30,10 @@ BuildRequires:	xz
 BuildRequires:	yelp-tools
 Requires(post,postun):	glib2 >= 1:2.40.0
 Requires:	dconf
+Requires:	glib2 >= 1:2.40.0
+Requires:	gtk+3 >= 3.11.6
+Requires:	gtksourceview3 >= 3.15.1
+Requires:	libsoup >= 2.42.0
 Provides:	gcalctool = 6.6.3-1
 Obsoletes:	gcalctool < 6.6.3-1
 # sr@Latn vs. sr@latin
@@ -51,11 +54,12 @@ gnome-calculator jest prostym kalkulatorem spełniającym wiele funkcji.
 %{__glib_gettextize}
 %{__intltoolize}
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
 %{__automake}
 %configure \
-	--disable-silent-rules
+	--disable-silent-rules \
+	--disable-static
 %{__make}
 
 %install
@@ -64,7 +68,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/gnome-calculator/libcalculator.{a,la}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/gnome-calculator/libcalculator.la
 
 %find_lang %{name} --with-gnome --all-name
 
@@ -73,11 +77,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 %glib_compile_schemas
-/sbin/ldconfig
 
 %postun
 %glib_compile_schemas
-/sbin/ldconfig
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
