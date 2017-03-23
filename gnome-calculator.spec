@@ -1,19 +1,19 @@
 Summary:	GNOME calculator
 Summary(pl.UTF-8):	Kalkulator dla GNOME
 Name:		gnome-calculator
-Version:	3.22.3
+Version:	3.24.0
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-calculator/3.22/%{name}-%{version}.tar.xz
-# Source0-md5:	de10518203fad44c2598cdaa8a44abbf
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-calculator/3.24/%{name}-%{version}.tar.xz
+# Source0-md5:	32a06b7edc33f7e95a0e7818769a729f
 URL:		https://live.gnome.org/Calculator
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.40.0
-BuildRequires:	gtk+3-devel >= 3.11.6
+BuildRequires:	gtk+3-devel >= 3.20.0
 BuildRequires:	gtksourceview3-devel >= 3.15.1
 BuildRequires:	intltool >= 0.50.0
 BuildRequires:	libsoup-devel >= 2.42.0
@@ -31,7 +31,7 @@ BuildRequires:	yelp-tools
 Requires(post,postun):	glib2 >= 1:2.40.0
 Requires:	dconf
 Requires:	glib2 >= 1:2.40.0
-Requires:	gtk+3 >= 3.11.6
+Requires:	gtk+3 >= 3.20.0
 Requires:	gtksourceview3 >= 3.15.1
 Requires:	libsoup >= 2.42.0
 Provides:	gcalctool = 6.6.3-1
@@ -89,10 +89,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/gnome-calculator-search-provider
 %dir %{_libdir}/gnome-calculator
 %attr(755,root,root) %{_libdir}/gnome-calculator/libcalculator.so
-%{_desktopdir}/gnome-calculator.desktop
-%{_datadir}/appdata/gnome-calculator.appdata.xml
+%{_desktopdir}/org.gnome.Calculator.desktop
+%{_datadir}/appdata/org.gnome.Calculator.appdata.xml
 %{_datadir}/dbus-1/services/org.gnome.Calculator.SearchProvider.service
 %{_datadir}/glib-2.0/schemas/org.gnome.calculator.gschema.xml
-%{_datadir}/gnome-shell/search-providers/gnome-calculator-search-provider.ini
+%{_datadir}/gnome-shell/search-providers/org.gnome.Calculator-search-provider.ini
 %{_mandir}/man1/gcalccmd.1*
 %{_mandir}/man1/gnome-calculator.1*
