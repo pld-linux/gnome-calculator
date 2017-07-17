@@ -16,6 +16,7 @@ BuildRequires:	glib2-devel >= 1:2.40.0
 BuildRequires:	gtk+3-devel >= 3.20.0
 BuildRequires:	gtksourceview3-devel >= 3.15.1
 BuildRequires:	intltool >= 0.50.0
+BuildRequires:	libmpc-devel
 BuildRequires:	libsoup-devel >= 2.42.0
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxml2-devel >= 2.0
