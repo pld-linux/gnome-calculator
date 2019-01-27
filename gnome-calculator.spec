@@ -1,15 +1,13 @@
 Summary:	GNOME calculator
 Summary(pl.UTF-8):	Kalkulator dla GNOME
 Name:		gnome-calculator
-Version:	3.28.2
-Release:	2
+Version:	3.30.1
+Release:	1
 License:	GPL v3+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-calculator/3.28/%{name}-%{version}.tar.xz
-# Source0-md5:	4ee911ceec2e8d08c4003d92b577b4ac
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-calculator/3.30/%{name}-%{version}.tar.xz
+# Source0-md5:	333092a29e48a2f9fd216d0c4f37f925
 URL:		https://live.gnome.org/Calculator
-BuildRequires:	autoconf >= 2.53
-BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-tools >= 0.19.8
 BuildRequires:	glib2-devel >= 1:2.40.0
@@ -20,10 +18,12 @@ BuildRequires:	libsoup-devel >= 2.42.0
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	libxml2-progs
+BuildRequires:	meson
 BuildRequires:	mpfr-devel
+BuildRequires:	ninja
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
-BuildRequires:	rpmbuild(macros) >= 1.592
+BuildRequires:	rpmbuild(macros) >= 1.727
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	vala >= 2:0.24.0
 BuildRequires:	xz
@@ -53,22 +53,13 @@ gnome-calculator jest prostym kalkulatorem spełniającym wiele funkcji.
 %setup -q
 
 %build
-%{__libtoolize}
-%{__aclocal} -I m4
-%{__autoconf}
-%{__automake}
-%configure \
-	--disable-silent-rules \
-	--disable-static
-%{__make}
+%meson build
+%ninja_build -C build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
-
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/gnome-calculator/libcalculator.la
+%ninja_install -C build
 
 %find_lang %{name} --with-gnome --all-name
 
@@ -88,8 +79,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc NEWS
 %attr(755,root,root) %{_bindir}/gcalccmd
 %attr(755,root,root) %{_bindir}/gnome-calculator
-%dir %{_libdir}/gnome-calculator
-%attr(755,root,root) %{_libdir}/gnome-calculator/libcalculator.so
 %attr(755,root,root) %{_libexecdir}/gnome-calculator-search-provider
 %{_desktopdir}/org.gnome.Calculator.desktop
 %{_datadir}/metainfo/org.gnome.Calculator.appdata.xml
