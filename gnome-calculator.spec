@@ -1,12 +1,13 @@
 Summary:	GNOME calculator
 Summary(pl.UTF-8):	Kalkulator dla GNOME
 Name:		gnome-calculator
-Version:	3.34.1
+Version:	3.36.0
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-calculator/3.34/%{name}-%{version}.tar.xz
-# Source0-md5:	9157b93a3f41fdad80df26c062b95c7b
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-calculator/3.36/%{name}-%{version}.tar.xz
+# Source0-md5:	71854fb58671b4a88ac990e2f2439e4f
+Patch0:		%{name}-gci.patch
 URL:		https://wiki.gnome.org/Apps/Calculator
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-tools >= 0.19.8
@@ -19,7 +20,7 @@ BuildRequires:	libsoup-devel >= 2.42.0
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	libxml2-progs
-BuildRequires:	meson >= 0.42
+BuildRequires:	meson >= 0.50.0
 BuildRequires:	mpfr-devel
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
@@ -29,7 +30,7 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	vala >= 2:0.24.0
 BuildRequires:	xz
 BuildRequires:	yelp-tools
-Requires(post,postun):	glib2 >= 1:2.40.0
+Requires(post,postun):	glib2 >= 1:2.50
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	dconf
 Requires:	gtk+3 >= 3.20.0
@@ -53,6 +54,8 @@ Summary:	GNOME Calculator library
 Summary(pl.UTF-8):	Biblioteka kalkulatora GNOME
 Group:		Libraries
 Requires:	glib2 >= 1:2.50
+# gtk+3 for libgci only
+Requires:	gtk+3 >= 3.20
 Requires:	libgee >= 0.20.0
 
 %description -n libgcalc
@@ -67,12 +70,25 @@ Summary(pl.UTF-8):	Pliki nagłówkowe kalkulatora GNOME
 Group:		Development/Libraries
 Requires:	libgcalc = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.50
+Requires:	gtk+3-devel >= 3.20
+Requires:	libgee-devel >= 0.20.0
 
 %description -n libgcalc-devel
 Header files for GNOME Calculator library.
 
 %description -n libgcalc-devel -l pl.UTF-8
 Pliki nagłówkowe kalkulatora GNOME.
+
+%package -n libgcalc-apidocs
+Summary:	API documentation for GNOME Calculator library
+Summary(pl.UTF-8):	Dokumentacja API biblioteki GNOME Calculator
+Group:		Documentation
+
+%description -n libgcalc-apidocs
+API documentation for GNOME Calculator library.
+
+%description -n libgcalc-apidocs -l pl.UTF-8
+Dokumentacja API biblioteki GNOME Calculator.
 
 %package -n vala-libgcalc
 Summary:	Vala API for gcalc library
@@ -90,6 +106,7 @@ API języka Vala do biblioteki gcalc.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 # --default-library=both causes duplicate ninja rules for gcalc/gcalc.h
@@ -138,18 +155,32 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n libgcalc
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libgcalc-1.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgcalc-1.so.0
-%{_libdir}/girepository-1.0/GCalc-1.typelib
+%attr(755,root,root) %{_libdir}/libgcalc-2.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgcalc-2.so.1
+%attr(755,root,root) %{_libdir}/libgci-1.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgci-1.so.0
+%{_libdir}/girepository-1.0/GCalc-2.typelib
+%{_libdir}/girepository-1.0/GCi-1.typelib
 
 %files -n libgcalc-devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libgcalc-1.so
-%{_includedir}/gcalc-1
-%{_datadir}/gir-1.0/GCalc-1.gir
-%{_pkgconfigdir}/gcalc-1.pc
+%attr(755,root,root) %{_libdir}/libgcalc-2.so
+%attr(755,root,root) %{_libdir}/libgci-1.so
+%{_includedir}/gcalc-2
+%{_includedir}/gci-1
+%{_datadir}/gir-1.0/GCalc-2.gir
+%{_datadir}/gir-1.0/GCi-1.gir
+%{_pkgconfigdir}/gcalc-2.pc
+%{_pkgconfigdir}/gci-1.pc
+
+%files -n libgcalc-apidocs
+%defattr(644,root,root,755)
+%{_datadir}/devhelp/books/GCalc-2
+%{_datadir}/devhelp/books/GCi-1
 
 %files -n vala-libgcalc
 %defattr(644,root,root,755)
-%{_datadir}/vala/vapi/gcalc-1.deps
-%{_datadir}/vala/vapi/gcalc-1.vapi
+%{_datadir}/vala/vapi/gcalc-2.deps
+%{_datadir}/vala/vapi/gcalc-2.vapi
+%{_datadir}/vala/vapi/gci-1.deps
+%{_datadir}/vala/vapi/gci-1.vapi
