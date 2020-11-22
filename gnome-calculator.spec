@@ -1,12 +1,12 @@
 Summary:	GNOME calculator
 Summary(pl.UTF-8):	Kalkulator dla GNOME
 Name:		gnome-calculator
-Version:	3.38.1
+Version:	3.38.2
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-calculator/3.38/%{name}-%{version}.tar.xz
-# Source0-md5:	1fadcd71b55963324cc5cc2ee8543131
+Source0:	https://download.gnome.org/sources/gnome-calculator/3.38/%{name}-%{version}.tar.xz
+# Source0-md5:	c634eae25fd365c61c31a20052fe0ea5
 Patch0:		%{name}-gci.patch
 URL:		https://wiki.gnome.org/Apps/Calculator
 BuildRequires:	docbook-dtd412-xml
@@ -25,7 +25,7 @@ BuildRequires:	mpfr-devel
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
-BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	rpmbuild(macros) >= 1.752
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	vala >= 2:0.24.0
 BuildRequires:	xz
@@ -97,6 +97,7 @@ Group:		Development/Libraries
 Requires:	libgcalc-devel = %{version}-%{release}
 Requires:	vala >= 2:0.24.0
 Requires:	vala-libgee >= 0.20.0
+%{?noarchpackage}
 
 %description -n vala-libgcalc
 Vala API for gcalc library.
