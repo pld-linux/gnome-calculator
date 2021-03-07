@@ -97,7 +97,7 @@ Group:		Development/Libraries
 Requires:	libgcalc-devel = %{version}-%{release}
 Requires:	vala >= 2:0.24.0
 Requires:	vala-libgee >= 0.20.0
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description -n vala-libgcalc
 Vala API for gcalc library.
