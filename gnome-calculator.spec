@@ -1,29 +1,31 @@
 Summary:	GNOME calculator
 Summary(pl.UTF-8):	Kalkulator dla GNOME
 Name:		gnome-calculator
-Version:	3.38.2
+Version:	40.0
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-calculator/3.38/%{name}-%{version}.tar.xz
-# Source0-md5:	c634eae25fd365c61c31a20052fe0ea5
+Source0:	https://download.gnome.org/sources/gnome-calculator/40/%{name}-%{version}.tar.xz
+# Source0-md5:	ba256c362b6ba5bfc0792ebeb0fb6a59
 Patch0:		%{name}-gci.patch
 URL:		https://wiki.gnome.org/Apps/Calculator
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-tools >= 0.19.8
 BuildRequires:	glib2-devel >= 1:2.50
-BuildRequires:	gtk+3-devel >= 3.20.0
+BuildRequires:	gtk+3-devel >= 3.24.1
 BuildRequires:	gtksourceview4-devel >= 4.0.2
 BuildRequires:	libgee-devel >= 0.20.0
+BuildRequires:	libhandy1-devel >= 1.0.0
 BuildRequires:	libmpc-devel
 BuildRequires:	libsoup-devel >= 2.42.0
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	libxml2-progs
-BuildRequires:	meson >= 0.50.0
+BuildRequires:	meson >= 0.52.0
 BuildRequires:	mpfr-devel
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.752
 BuildRequires:	tar >= 1:1.22
@@ -33,10 +35,11 @@ BuildRequires:	yelp-tools
 Requires(post,postun):	glib2 >= 1:2.50
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	dconf
-Requires:	gtk+3 >= 3.20.0
+Requires:	gtk+3 >= 3.24.1
 Requires:	gtksourceview4 >= 4.0.2
 Requires:	hicolor-icon-theme
 Requires:	libgcalc = %{version}-%{release}
+Requires:	libhandy1 >= 1.0.0
 Requires:	libsoup >= 2.42.0
 Provides:	gcalctool = 6.6.3-1
 Obsoletes:	gcalctool < 6.6.3-1
@@ -55,7 +58,7 @@ Summary(pl.UTF-8):	Biblioteka kalkulatora GNOME
 Group:		Libraries
 Requires:	glib2 >= 1:2.50
 # gtk+3 for libgci only
-Requires:	gtk+3 >= 3.20
+Requires:	gtk+3 >= 3.24.1
 Requires:	libgee >= 0.20.0
 
 %description -n libgcalc
@@ -70,7 +73,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe kalkulatora GNOME
 Group:		Development/Libraries
 Requires:	libgcalc = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.50
-Requires:	gtk+3-devel >= 3.20
+Requires:	gtk+3-devel >= 3.24.1
 Requires:	libgee-devel >= 0.20.0
 
 %description -n libgcalc-devel
