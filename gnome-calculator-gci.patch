@@ -1,8 +1,8 @@
 Install gci include dir consistent with .pc file Cflags
---- gnome-calculator-3.36.0/gci/meson.build.orig	2020-03-07 23:00:51.000000000 +0100
-+++ gnome-calculator-3.36.0/gci/meson.build	2020-04-16 22:17:04.635759006 +0200
-@@ -93,7 +93,7 @@
- 	install : true,
+--- gnome-calculator-42.1/gci/meson.build.orig	2022-05-27 18:27:52.000000000 +0200
++++ gnome-calculator-42.1/gci/meson.build	2022-06-04 21:13:45.101311286 +0200
+@@ -98,7 +98,7 @@ libgci = library(GCI_VERSIONED_PROJECT_N
+ 	],
  	install_dir : [
  		true,
 -		join_paths (get_option('includedir'), 'gci-@0@'.format (API_VERSION), 'gci'),

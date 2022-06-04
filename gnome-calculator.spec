@@ -1,27 +1,28 @@
 Summary:	GNOME calculator
 Summary(pl.UTF-8):	Kalkulator dla GNOME
 Name:		gnome-calculator
-Version:	41.1
+Version:	42.1
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-calculator/41/%{name}-%{version}.tar.xz
-# Source0-md5:	178dc6909ee18644cb06a4164ac936c9
+Source0:	https://download.gnome.org/sources/gnome-calculator/42/%{name}-%{version}.tar.xz
+# Source0-md5:	d18f7c6101b81cd62dfdb309cd1cfbca
 Patch0:		%{name}-gci.patch
+Patch1:		%{name}-no-update.patch
 URL:		https://wiki.gnome.org/Apps/Calculator
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-tools >= 0.19.8
 BuildRequires:	glib2-devel >= 1:2.50
-BuildRequires:	gtk+3-devel >= 3.24.1
-BuildRequires:	gtksourceview4-devel >= 4.0.2
+BuildRequires:	gtk4-devel >= 4.4.1
+BuildRequires:	gtksourceview5-devel >= 5.3.0
+BuildRequires:	libadwaita-devel >= 1.0.0
 BuildRequires:	libgee-devel >= 0.20.0
-BuildRequires:	libhandy1-devel >= 1.0.0
 BuildRequires:	libmpc-devel
 BuildRequires:	libsoup-devel >= 2.42.0
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	libxml2-progs
-BuildRequires:	meson >= 0.52.0
+BuildRequires:	meson >= 0.57.0
 BuildRequires:	mpfr-devel
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
@@ -30,16 +31,17 @@ BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.752
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	vala >= 2:0.24.0
+BuildRequires:	vala-gtksourceview5 >= 5.3.0
 BuildRequires:	xz
 BuildRequires:	yelp-tools
 Requires(post,postun):	glib2 >= 1:2.50
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	dconf
-Requires:	gtk+3 >= 3.24.1
-Requires:	gtksourceview4 >= 4.0.2
+Requires:	gtk4 >= 4.4.1
+Requires:	gtksourceview5 >= 5.3.0
 Requires:	hicolor-icon-theme
+Requires:	libadwaita >= 1.0.0
 Requires:	libgcalc = %{version}-%{release}
-Requires:	libhandy1 >= 1.0.0
 Requires:	libsoup >= 2.42.0
 Provides:	gcalctool = 6.6.3-1
 Obsoletes:	gcalctool < 6.6.3-1
@@ -57,8 +59,8 @@ Summary:	GNOME Calculator library
 Summary(pl.UTF-8):	Biblioteka kalkulatora GNOME
 Group:		Libraries
 Requires:	glib2 >= 1:2.50
-# gtk+3 for libgci only
-Requires:	gtk+3 >= 3.24.1
+# gtk4 for libgci only
+Requires:	gtk4 >= 4.4.1
 Requires:	libgee >= 0.20.0
 
 %description -n libgcalc
@@ -73,7 +75,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe kalkulatora GNOME
 Group:		Development/Libraries
 Requires:	libgcalc = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.50
-Requires:	gtk+3-devel >= 3.24.1
+Requires:	gtk4-devel >= 4.4.1
 Requires:	libgee-devel >= 0.20.0
 
 %description -n libgcalc-devel
@@ -111,6 +113,7 @@ API języka Vala do biblioteki gcalc.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 # --default-library=both causes duplicate ninja rules for gcalc/gcalc.h
@@ -152,7 +155,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/metainfo/org.gnome.Calculator.appdata.xml
 %{_desktopdir}/org.gnome.Calculator.desktop
 %{_iconsdir}/hicolor/scalable/apps/org.gnome.Calculator.svg
-%{_iconsdir}/hicolor/scalable/apps/org.gnome.Calculator.Devel.svg
 %{_iconsdir}/hicolor/symbolic/apps/org.gnome.Calculator-symbolic.svg
 %{_mandir}/man1/gcalccmd.1*
 %{_mandir}/man1/gnome-calculator.1*

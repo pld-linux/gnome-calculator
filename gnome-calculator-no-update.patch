@@ -1,0 +1,15 @@
+--- gnome-calculator-42.1/meson.build.orig	2022-05-27 18:27:52.000000000 +0200
++++ gnome-calculator-42.1/meson.build	2022-06-04 20:46:13.330259698 +0200
+@@ -80,12 +80,6 @@ conf.set10('DEVELOPMENT_BUILD', get_opti
+ configure_file(output: 'config.h', configuration: conf)
+ config_h_dir = include_directories('.')
+ 
+-# Extra scripts
+-gnome.post_install(
+-  glib_compile_schemas: true,
+-  gtk_update_icon_cache: true,
+-)
+-
+ # Subdirs
+ subdir('vapi')
+ subdir('gcalc')
