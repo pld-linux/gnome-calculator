@@ -1,12 +1,12 @@
 Summary:	GNOME calculator
 Summary(pl.UTF-8):	Kalkulator dla GNOME
 Name:		gnome-calculator
-Version:	42.1
+Version:	42.2
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications
 Source0:	https://download.gnome.org/sources/gnome-calculator/42/%{name}-%{version}.tar.xz
-# Source0-md5:	d18f7c6101b81cd62dfdb309cd1cfbca
+# Source0-md5:	d8a81c51b5ce24e983860f2578e30617
 Patch0:		%{name}-gci.patch
 Patch1:		%{name}-no-update.patch
 URL:		https://wiki.gnome.org/Apps/Calculator
