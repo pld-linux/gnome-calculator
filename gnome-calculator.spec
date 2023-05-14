@@ -1,24 +1,25 @@
 Summary:	GNOME calculator
 Summary(pl.UTF-8):	Kalkulator dla GNOME
 Name:		gnome-calculator
-Version:	42.2
+Version:	43.0.1
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-calculator/42/%{name}-%{version}.tar.xz
-# Source0-md5:	d8a81c51b5ce24e983860f2578e30617
+Source0:	https://download.gnome.org/sources/gnome-calculator/43/%{name}-%{version}.tar.xz
+# Source0-md5:	2fa4c054938f416911302de5354d3292
 Patch0:		%{name}-gci.patch
 Patch1:		%{name}-no-update.patch
 URL:		https://wiki.gnome.org/Apps/Calculator
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-tools >= 0.19.8
 BuildRequires:	glib2-devel >= 1:2.50
+BuildRequires:	gobject-introspection-devel
 BuildRequires:	gtk4-devel >= 4.4.1
 BuildRequires:	gtksourceview5-devel >= 5.3.0
-BuildRequires:	libadwaita-devel >= 1.0.0
+BuildRequires:	libadwaita-devel >= 1.2
 BuildRequires:	libgee-devel >= 0.20.0
 BuildRequires:	libmpc-devel
-BuildRequires:	libsoup-devel >= 2.42.0
+BuildRequires:	libsoup3-devel >= 3.0
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	libxml2-progs
@@ -40,9 +41,9 @@ Requires:	dconf
 Requires:	gtk4 >= 4.4.1
 Requires:	gtksourceview5 >= 5.3.0
 Requires:	hicolor-icon-theme
-Requires:	libadwaita >= 1.0.0
+Requires:	libadwaita >= 1.2
 Requires:	libgcalc = %{version}-%{release}
-Requires:	libsoup >= 2.42.0
+Requires:	libsoup3 >= 3.0
 Provides:	gcalctool = 6.6.3-1
 Obsoletes:	gcalctool < 6.6.3-1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
