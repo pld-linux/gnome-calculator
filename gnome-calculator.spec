@@ -1,12 +1,12 @@
 Summary:	GNOME calculator
 Summary(pl.UTF-8):	Kalkulator dla GNOME
 Name:		gnome-calculator
-Version:	44.0
+Version:	45.0.2
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-calculator/44/%{name}-%{version}.tar.xz
-# Source0-md5:	f5e2d3f5f2b08bf7a234e3e3147a8c79
+Source0:	https://download.gnome.org/sources/gnome-calculator/45/%{name}-%{version}.tar.xz
+# Source0-md5:	cd6a59eb2b34be4c75dab07258cc6e47
 Patch0:		%{name}-gci.patch
 Patch1:		%{name}-no-update.patch
 URL:		https://wiki.gnome.org/Apps/Calculator
@@ -16,7 +16,7 @@ BuildRequires:	glib2-devel >= 1:2.50
 BuildRequires:	gobject-introspection-devel
 BuildRequires:	gtk4-devel >= 4.4.1
 BuildRequires:	gtksourceview5-devel >= 5.3.0
-BuildRequires:	libadwaita-devel >= 1.2
+BuildRequires:	libadwaita-devel >= 1.4
 BuildRequires:	libgee-devel >= 0.20.0
 BuildRequires:	libmpc-devel
 BuildRequires:	libsoup3-devel >= 3.0
@@ -41,7 +41,7 @@ Requires:	dconf
 Requires:	gtk4 >= 4.4.1
 Requires:	gtksourceview5 >= 5.3.0
 Requires:	hicolor-icon-theme
-Requires:	libadwaita >= 1.2
+Requires:	libadwaita >= 1.4
 Requires:	libgcalc = %{version}-%{release}
 Requires:	libsoup3 >= 3.0
 Provides:	gcalctool = 6.6.3-1
