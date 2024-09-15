@@ -1,12 +1,12 @@
 Summary:	GNOME calculator
 Summary(pl.UTF-8):	Kalkulator dla GNOME
 Name:		gnome-calculator
-Version:	46.1
+Version:	47.0
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-calculator/46/%{name}-%{version}.tar.xz
-# Source0-md5:	e3170847e49203e645abc3f3c91224a6
+Source0:	https://download.gnome.org/sources/gnome-calculator/47/%{name}-%{version}.tar.xz
+# Source0-md5:	9548fab57beb89bc927c8b868bd8230d
 Patch0:		%{name}-gci.patch
 Patch1:		%{name}-no-update.patch
 URL:		https://wiki.gnome.org/Apps/Calculator
@@ -14,9 +14,9 @@ BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-tools >= 0.19.8
 BuildRequires:	glib2-devel >= 1:2.50
 BuildRequires:	gobject-introspection-devel
-BuildRequires:	gtk4-devel >= 4.11.4
+BuildRequires:	gtk4-devel >= 4.15.2
 BuildRequires:	gtksourceview5-devel >= 5.3.0
-BuildRequires:	libadwaita-devel >= 1.4
+BuildRequires:	libadwaita-devel >= 1.6
 BuildRequires:	libgee-devel >= 0.20.0
 BuildRequires:	libmpc-devel
 BuildRequires:	libsoup3-devel >= 3.4.0
@@ -37,10 +37,10 @@ BuildRequires:	yelp-tools
 Requires(post,postun):	glib2 >= 1:2.50
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	dconf
-Requires:	gtk4 >= 4.11.4
+Requires:	gtk4 >= 4.15.2
 Requires:	gtksourceview5 >= 5.3.0
 Requires:	hicolor-icon-theme
-Requires:	libadwaita >= 1.4
+Requires:	libadwaita >= 1.6
 Requires:	libgcalc = %{version}-%{release}
 Requires:	libsoup3 >= 3.4.0
 Provides:	gcalctool = 6.6.3-1
@@ -60,7 +60,7 @@ Summary(pl.UTF-8):	Biblioteka kalkulatora GNOME
 Group:		Libraries
 Requires:	glib2 >= 1:2.50
 # gtk4 for libgci only
-Requires:	gtk4 >= 4.11.4
+Requires:	gtk4 >= 4.15.2
 Requires:	libgee >= 0.20.0
 
 %description -n libgcalc
@@ -75,7 +75,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe kalkulatora GNOME
 Group:		Development/Libraries
 Requires:	libgcalc = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.50
-Requires:	gtk4-devel >= 4.11.4
+Requires:	gtk4-devel >= 4.15.2
 Requires:	libgee-devel >= 0.20.0
 
 %description -n libgcalc-devel

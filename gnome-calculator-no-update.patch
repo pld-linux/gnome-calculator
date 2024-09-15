@@ -1,6 +1,6 @@
---- gnome-calculator-45.0.2/meson.build.orig	2023-10-29 20:54:56.491369790 +0100
-+++ gnome-calculator-45.0.2/meson.build	2023-10-29 20:55:42.561120209 +0100
-@@ -96,12 +96,6 @@ subdir('gci')
+--- gnome-calculator-47.0/meson.build.orig	2024-09-15 20:47:17.728941955 +0200
++++ gnome-calculator-47.0/meson.build	2024-09-15 20:52:44.917169424 +0200
+@@ -97,12 +97,6 @@ subdir('gci')
  endif
  
  if get_option('app')
@@ -10,6 +10,6 @@
 -  gtk_update_icon_cache: true,
 -)
 -
- libadwaita = dependency('libadwaita-1', version: '>= 1.4.alpha')
+ libadwaita = dependency('libadwaita-1', version: '>= 1.6.beta')
  gtksourceview = dependency('gtksourceview-5', version: '>= 5.3.0')
  subdir('data')
