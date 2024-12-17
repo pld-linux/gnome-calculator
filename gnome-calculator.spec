@@ -1,12 +1,12 @@
 Summary:	GNOME calculator
 Summary(pl.UTF-8):	Kalkulator dla GNOME
 Name:		gnome-calculator
-Version:	47.0
+Version:	47.1
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications
 Source0:	https://download.gnome.org/sources/gnome-calculator/47/%{name}-%{version}.tar.xz
-# Source0-md5:	9548fab57beb89bc927c8b868bd8230d
+# Source0-md5:	3c7f14fd01b093e4b1a5abf870d17c5e
 Patch0:		%{name}-gci.patch
 Patch1:		%{name}-no-update.patch
 URL:		https://wiki.gnome.org/Apps/Calculator
@@ -112,8 +112,8 @@ API języka Vala do biblioteki gcalc.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
+%patch -P0 -p1
+%patch -P1 -p1
 
 %build
 # --default-library=both causes duplicate ninja rules for gcalc/gcalc.h
