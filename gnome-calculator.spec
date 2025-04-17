@@ -1,12 +1,12 @@
 Summary:	GNOME calculator
 Summary(pl.UTF-8):	Kalkulator dla GNOME
 Name:		gnome-calculator
-Version:	47.1
+Version:	47.2
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications
 Source0:	https://download.gnome.org/sources/gnome-calculator/47/%{name}-%{version}.tar.xz
-# Source0-md5:	3c7f14fd01b093e4b1a5abf870d17c5e
+# Source0-md5:	744bc4268c9ef5d1fb50572a7d83e5bd
 Patch0:		%{name}-gci.patch
 Patch1:		%{name}-no-update.patch
 URL:		https://wiki.gnome.org/Apps/Calculator
@@ -28,7 +28,7 @@ BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(find_lang) >= 1.23
-BuildRequires:	rpmbuild(macros) >= 1.752
+BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	vala >= 2:0.24.0
 BuildRequires:	vala-gtksourceview5 >= 5.3.0
@@ -117,15 +117,15 @@ API języka Vala do biblioteki gcalc.
 
 %build
 # --default-library=both causes duplicate ninja rules for gcalc/gcalc.h
-%meson build \
+%meson \
 	--default-library=shared
 
-%ninja_build -C build
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%ninja_install -C build
+%meson_install
 
 %find_lang %{name} --with-gnome --all-name
 
