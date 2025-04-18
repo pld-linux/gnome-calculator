@@ -33,6 +33,7 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	vala >= 2:0.24.0
 BuildRequires:	vala-gtksourceview5 >= 5.3.0
 BuildRequires:	vala-libadwaita >= 1.6
+BuildRequires:	vala-libsoup3 >= 3.4.0
 BuildRequires:	xz
 BuildRequires:	yelp-tools
 Requires(post,postun):	glib2 >= 1:2.50
