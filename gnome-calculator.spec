@@ -1,20 +1,20 @@
 Summary:	GNOME calculator
 Summary(pl.UTF-8):	Kalkulator dla GNOME
 Name:		gnome-calculator
-Version:	47.3
+Version:	48.1
 Release:	1
 License:	GPL v3+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-calculator/47/%{name}-%{version}.tar.xz
-# Source0-md5:	edbe8020559c032d987cdb891ac88883
+Source0:	https://download.gnome.org/sources/gnome-calculator/48/%{name}-%{version}.tar.xz
+# Source0-md5:	3a173bf3f454d8ff20e616142e30e950
 Patch0:		%{name}-gci.patch
 Patch1:		%{name}-no-update.patch
-URL:		https://wiki.gnome.org/Apps/Calculator
+URL:		https://apps.gnome.org/Calculator/
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-tools >= 0.19.8
 BuildRequires:	glib2-devel >= 1:2.50
 BuildRequires:	gobject-introspection-devel
-BuildRequires:	gtk4-devel >= 4.15.2
+BuildRequires:	gtk4-devel >= 4.17.0
 BuildRequires:	gtksourceview5-devel >= 5.3.0
 BuildRequires:	libadwaita-devel >= 1.6
 BuildRequires:	libgee-devel >= 0.20.0
@@ -39,7 +39,7 @@ BuildRequires:	yelp-tools
 Requires(post,postun):	glib2 >= 1:2.50
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	dconf
-Requires:	gtk4 >= 4.15.2
+Requires:	gtk4 >= 4.17.0
 Requires:	gtksourceview5 >= 5.3.0
 Requires:	hicolor-icon-theme
 Requires:	libadwaita >= 1.6
@@ -62,7 +62,7 @@ Summary(pl.UTF-8):	Biblioteka kalkulatora GNOME
 Group:		Libraries
 Requires:	glib2 >= 1:2.50
 # gtk4 for libgci only
-Requires:	gtk4 >= 4.15.2
+Requires:	gtk4 >= 4.17.0
 Requires:	libgee >= 0.20.0
 
 %description -n libgcalc
@@ -77,7 +77,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe kalkulatora GNOME
 Group:		Development/Libraries
 Requires:	libgcalc = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.50
-Requires:	gtk4-devel >= 4.15.2
+Requires:	gtk4-devel >= 4.17.0
 Requires:	libgee-devel >= 0.20.0
 
 %description -n libgcalc-devel
@@ -154,7 +154,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/dbus-1/services/org.gnome.Calculator.SearchProvider.service
 %{_datadir}/glib-2.0/schemas/org.gnome.calculator.gschema.xml
 %{_datadir}/gnome-shell/search-providers/org.gnome.Calculator-search-provider.ini
-%{_datadir}/metainfo/org.gnome.Calculator.appdata.xml
+%{_datadir}/metainfo/org.gnome.Calculator.metainfo.xml
 %{_desktopdir}/org.gnome.Calculator.desktop
 %{_iconsdir}/hicolor/scalable/apps/org.gnome.Calculator.svg
 %{_iconsdir}/hicolor/symbolic/apps/org.gnome.Calculator-symbolic.svg
