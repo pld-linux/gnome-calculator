@@ -1,27 +1,27 @@
 Summary:	GNOME calculator
 Summary(pl.UTF-8):	Kalkulator dla GNOME
 Name:		gnome-calculator
-Version:	48.1
-Release:	2
+Version:	50.0
+Release:	1
 License:	GPL v3+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-calculator/48/%{name}-%{version}.tar.xz
-# Source0-md5:	3a173bf3f454d8ff20e616142e30e950
+Source0:	https://download.gnome.org/sources/gnome-calculator/50/%{name}-%{version}.tar.xz
+# Source0-md5:	db7f8f49762a51c5c658f1b4c0ed74d8
 Patch0:		%{name}-gci.patch
 Patch1:		%{name}-no-update.patch
 URL:		https://apps.gnome.org/Calculator/
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-tools >= 0.19.8
-BuildRequires:	glib2-devel >= 1:2.50
+BuildRequires:	glib2-devel >= 1:2.72.0
 BuildRequires:	gobject-introspection-devel
 BuildRequires:	gtk4-devel >= 4.17.0
 BuildRequires:	gtksourceview5-devel >= 5.3.0
-BuildRequires:	libadwaita-devel >= 1.6
+BuildRequires:	libadwaita-devel >= 1.8
 BuildRequires:	libgee-devel >= 0.20.0
 BuildRequires:	libmpc-devel
 BuildRequires:	libsoup3-devel >= 3.4.0
 BuildRequires:	libxml2-devel >= 2.0
-BuildRequires:	libxml2-progs
+BuildRequires:	libxml2-progs >= 2.0
 BuildRequires:	meson >= 0.57.0
 BuildRequires:	mpfr-devel
 BuildRequires:	ninja >= 1.5
@@ -32,17 +32,17 @@ BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	vala >= 2:0.24.0
 BuildRequires:	vala-gtksourceview5 >= 5.3.0
-BuildRequires:	vala-libadwaita >= 1.6
+BuildRequires:	vala-libadwaita >= 1.8
 BuildRequires:	vala-libsoup3 >= 3.4.0
 BuildRequires:	xz
 BuildRequires:	yelp-tools
-Requires(post,postun):	glib2 >= 1:2.50
+Requires(post,postun):	glib2 >= 1:2.72.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	dconf
 Requires:	gtk4 >= 4.17.0
 Requires:	gtksourceview5 >= 5.3.0
 Requires:	hicolor-icon-theme
-Requires:	libadwaita >= 1.6
+Requires:	libadwaita >= 1.8
 Requires:	libgcalc = %{version}-%{release}
 Requires:	libsoup3 >= 3.4.0
 Provides:	gcalctool = 6.6.3-1
@@ -60,7 +60,7 @@ gnome-calculator jest prostym kalkulatorem spełniającym wiele funkcji.
 Summary:	GNOME Calculator library
 Summary(pl.UTF-8):	Biblioteka kalkulatora GNOME
 Group:		Libraries
-Requires:	glib2 >= 1:2.50
+Requires:	glib2 >= 1:2.72.0
 # gtk4 for libgci only
 Requires:	gtk4 >= 4.17.0
 Requires:	libgee >= 0.20.0
@@ -76,7 +76,7 @@ Summary:	Header files for GNOME Calculator library
 Summary(pl.UTF-8):	Pliki nagłówkowe kalkulatora GNOME
 Group:		Development/Libraries
 Requires:	libgcalc = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.50
+Requires:	glib2-devel >= 1:2.72.0
 Requires:	gtk4-devel >= 4.17.0
 Requires:	libgee-devel >= 0.20.0
 
@@ -163,17 +163,17 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n libgcalc
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libgcalc-2.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgcalc-2.so.1
-%attr(755,root,root) %{_libdir}/libgci-1.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgci-1.so.0
+%{_libdir}/libgcalc-2.so.*.*.*
+%ghost %{_libdir}/libgcalc-2.so.1
+%{_libdir}/libgci-1.so.*.*.*
+%ghost %{_libdir}/libgci-1.so.0
 %{_libdir}/girepository-1.0/GCalc-2.typelib
 %{_libdir}/girepository-1.0/GCi-1.typelib
 
 %files -n libgcalc-devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libgcalc-2.so
-%attr(755,root,root) %{_libdir}/libgci-1.so
+%{_libdir}/libgcalc-2.so
+%{_libdir}/libgci-1.so
 %{_includedir}/gcalc-2
 %{_includedir}/gci-1
 %{_datadir}/gir-1.0/GCalc-2.gir
